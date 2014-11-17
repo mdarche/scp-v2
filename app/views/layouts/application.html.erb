@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <title><%= content_for?(:title) ? yield(:title) : "foundation-rails" %></title>
+    <title><%= content_for?(:title) ? yield(:title) : "Scooper | Challenge the World" %></title>
 
     <%= stylesheet_link_tag    "application" %>
     <%= javascript_include_tag "vendor/modernizr" %>
@@ -13,7 +13,65 @@
 
   <body>
 
-    <%= yield %>
+    <nav class="top-bar" data-topbar>
+        <ul class="title-area">
+          <li class="name">
+            <h1><%= link_to "Scooper"  %></a></h1>
+          </li>
+          <li class="toggle-topbar menu-icon"><a href="#"><span></span></a></li>
+        </ul>
+      
+        <section class="top-bar-section">
+          <% if current_user %>
+            <ul class="right">
+              <li class="divider"></li>
+              <li><%= link_to "About"  %></li>
+              <li class="divider"></li>
+              <li><%= link_to "My Profile", user_session_path %></li>
+              <li class="divider"></li>
+              <li><%= link_to "Log Out", destroy_user_session_path %></li>
+              <li class="divider"></li>
+              <li><%= link_to "Contact" %></li>
+                <li class="has-form">
+                  <div class="row collapse">
+                    <div class="large-8 small-9 columns">
+                      <input type="text" placeholder="Find a Scoop">
+                    </div>
+                    <div class="large-4 small-3 columns">
+                      <a href="#" class="alert button expand">Search</a>
+                    </div>
+                  </div>
+                </li>
+            </ul>
+          <% else %>
+            <ul class="right">
+              <li class="divider"></li>
+              <li><%= link_to "About" %></li>
+              <li class="divider"></li>
+              <li><%= link_to "Sign In", user_session_path %></li>
+              <li class="divider"></li>
+              <li><%= link_to "Register", new_user_registration_path %></li>
+              <li class="divider"></li>
+              <li><%= link_to "Contact" %></li>
+                <li class="has-form">
+                  <div class="row collapse">
+                    <div class="large-8 small-9 columns">
+                      <input type="text" placeholder="Find a Scoop">
+                    </div>
+                    <div class="large-4 small-3 columns">
+                      <a href="#" class="alert button expand">Search</a>
+                    </div>
+                  </div>
+                </li>
+            </ul>
+          <% end %>
+        </section>
+    </nav>
+
+    <div class="row">
+      <div class="large-4 columns"><%= yield %></div>
+    </div>
+
     <%= javascript_include_tag "application" %>
   </body>
 </html>
