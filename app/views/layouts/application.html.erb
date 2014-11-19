@@ -16,7 +16,7 @@
     <nav class="top-bar" data-topbar>
         <ul class="title-area">
           <li class="name">
-            <h1><%= link_to "Scooper"  %></a></h1>
+            <h1><%= link_to "Scooper", static_pages_home_path %></a></h1>
           </li>
           <li class="toggle-topbar menu-icon"><a href="#"><span></span></a></li>
         </ul>
@@ -25,13 +25,13 @@
           <% if current_user %>
             <ul class="right">
               <li class="divider"></li>
-              <li><%= link_to "About"  %></li>
+              <li><%= link_to "About", static_pages_about_path %></li>
               <li class="divider"></li>
               <li><%= link_to "My Profile", user_session_path %></li>
               <li class="divider"></li>
               <li><%= link_to "Log Out", destroy_user_session_path %></li>
               <li class="divider"></li>
-              <li><%= link_to "Contact" %></li>
+              <li><%= link_to "Contact", static_pages_contact_path %></li>
                 <li class="has-form">
                   <div class="row collapse">
                     <div class="large-8 small-9 columns">
@@ -46,14 +46,14 @@
           <% else %>
             <ul class="right">
               <li class="divider"></li>
-              <li><%= link_to "About" %></li>
+              <li><%= link_to "About", static_pages_about_path %></li>
               <li class="divider"></li>
               <li><%= link_to "Sign In", user_session_path %></li>
               <li class="divider"></li>
               <li><%= link_to "Register", new_user_registration_path %></li>
               <li class="divider"></li>
-              <li><%= link_to "Contact" %></li>
-                <li class="has-form">
+              <li><%= link_to "Contact", static_pages_contact_path %></li>
+                <!--<li class="has-form">
                   <div class="row collapse">
                     <div class="large-8 small-9 columns">
                       <input type="text" placeholder="Find a Scoop">
@@ -62,7 +62,7 @@
                       <a href="#" class="alert button expand">Search</a>
                     </div>
                   </div>
-                </li>
+                </li>-->
             </ul>
           <% end %>
         </section>
@@ -71,9 +71,7 @@
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
 
-    <div class="row">
-      <div class="large-4 columns"><%= yield %></div>
-    </div>
+    <%= yield %>
 
     <%= javascript_include_tag "application" %>
   </body>

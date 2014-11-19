@@ -4,10 +4,4 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  after_create :redire
-
-  	def redire
-		redirect_to root_path
-	end
-
 end
